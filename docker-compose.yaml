@@ -1,0 +1,13 @@
+version: "3"
+services:
+    nginx:
+        container_name: nginx
+        image: nginx:latest
+        ports:
+            - 80:80
+        volumes:
+            - ./nginx.conf.template:/etc/nginx/templates/nginx.conf.template
+        environment:
+            NGINX_ENVSUBST_OUTPUT_DIR: /etc/nginx
+            CF_ACCESS_CLIENT_ID: ${CF_ACCESS_CLIENT_ID}
+            CF_ACCESS_CLIENT_SECRET: ${CF_ACCESS_CLIENT_SECRET}
